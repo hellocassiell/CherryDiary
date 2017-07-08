@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>写日记</title>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+	<style type="text/css">
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		
+		#head {
+			background-color: #FF9FBA;
+			height: 40px;
+			color: white;
+			text-align: center;
+			line-height: 40px;
+			font-family: "微软雅黑";
+			font-size: 1em;
+		}
+		
+		#head a {
+			color: white;
+			position: absolute;
+			text-decoration: none;
+			font-size: 12px;
+		}
+		
+		#area {
+			width: 100%;
+			height: 700px;
+			background-image: url(img/xz.jpg);
+			background-repeat: repeat-y;
+			background-position: center top;
+			background-size: cover;
+			color: peru;
+		}
+		
+		#en,
+		#zh {
+			display: block;
+			padding: 10px;
+			padding-bottom: 0;
+			border-radius: 3px;
+			resize: none;
+			font-size: 17px;
+			color: #000;
+			background-color: transparent;
+			border-left: 0;
+			border-right: 0;
+			border-top: 0;
+			border-bottom: 0;
+		}
+		
+		#en,
+		#zh:focus {
+			outline: none;
+		}
+		
+		#save {
+			height: 35px;
+			width: 100%;
+			border: none;
+			background: pink;
+			color: #fff;
+			border-radius: 3px;
+			position: fixed;
+			bottom: 0;
+			font-size: 15px;
+			line-height: 35px;
+		}
+	</style>
+
+	<script lang='text/javascript'>
+		window.addEventListener("load", eventWindowLoaded, false);
+
+		var entries = [];
+		var curIndex = -1;
+
+		function eventWindowLoaded() {
+			loadEntries(1);
+			showNext();
+
+			var dayselection = $("dayselection");
+			dayselection.addEventListener("change", daysSelectionChanged, false);
+		}
+
+		function daysSelectionChanged(e) {
+			var target = e.target;
+			loadEntries(target.value);
+
+			clearTextarea();
+			curIndex = -1;
+			showNext();
+			log('总共' + entries.length + '篇, 当前第' + (curIndex + 1) + '篇');
+		}
+
+		function loadEntries(days) {
+			var now = new Date().getTime();
+			var arr = [];
+			for(var i = 0; i < localStorage.length; i++) {
+				var time = localStorage.key(i);
+				var daysBetween = (now - time) / 24 / 60 / 60 / 1000;
+				// console.log(daysBetween);
+				if(daysBetween <= days) {
+					var value = JSON.parse(localStorage.getItem(time));
+					var entry = {
+						time: time,
+						data: value
+					};
+					arr.push(entry);
+				}
+			}
+			entries = arr;
+		}
+
+		function saveEntry() {
+			var data_en = $('en').value;
+			var data_zh = $('zh').value;
+			var data = {
+				en: data_en,
+				zh: data_zh
+			};
+			var time = new Date().getTime();
+			if(data_en == '' || data_zh == '') // TODO: 正则
+			{
+				alert('必须输入标题和内容哦!');
+			} else {
+				localStorage.setItem(time, JSON.stringify(data));
+				// Update UI
+				alert('保存成功!');
+				// ReLoad entries
+				loadEntries($('dayselection').value);
+				// Recovery current entry
+				curIndex--;
+				showNext();
+			}
+		}
+
+		function deleteEntry() {
+			var currentEntry = entries[curIndex];
+			if(currentEntry) {
+				localStorage.removeItem(currentEntry.time);
+				// Update UI
+				alert('删除成功!');
+				// Reload entries
+				loadEntries($('dayselection').value);
+				// Go to next entry
+				curIndex--;
+				showNext();
+			}
+		}
+
+		function clearStorage() {
+			localStorage.clear();
+			log('数据初始化完成!');
+		}
+
+		function showNext() {
+			if(curIndex + 1 <= entries.length - 1) {
+				curIndex++;
+				var entry = entries[curIndex];
+				showTextarea(entry.data);
+
+				log('总共' + entries.length + '篇, 当前第' + (curIndex + 1) + '篇');
+			}
+		}
+
+		function showPrevious() {
+			if(curIndex - 1 >= 0) {
+				curIndex--;
+				var entry = entries[curIndex];
+				showTextarea(entry.data);
+
+				log('总共' + entries.length + '篇, 当前第' + (curIndex + 1) + '篇');
+			}
+		}
+
+		function showTextarea(data) {
+			var target_en = $('bt');
+			var target_zh = $('nr');
+			//			target_en.innerHTML = data.en;
+			//			target_zh.innerHTML = data.zh;
+		}
+
+		function clearTextarea() {
+			$('en').value = '';
+			$('zh').value = '';
+		}
+
+		function $(id) {
+			return document.getElementById(id);
+		}
+
+		function log(msg) {
+			var target = document.getElementById('msg');
+			//			target.innerHTML = msg;
+		}
+	</script>
+</head>
+
+<body>
+	<div id="head">
+		<a href="home.html" data-ajax="false" style="left: 12px;">返回</a>
+		<span style="font-weight: bolder;">写一写</span>
+		<a href="#" id="delete" data-ajax="false" style="right: 12px;" onclick="clearTextarea();">清空</a>
+
+	</div>
+	<div id="area">
+
+		标题:<br/>
+		<textarea id="en" style="width:300px;height: 30px;"></textarea>
+		<hr/>
+		 内容:
+		<br/>
+		<textarea id="zh" style="width: 300px; height: 480px;"></textarea><br/>
+		<input type="button" id="save" value="保&nbsp;存" onclick="saveEntry();">
+
+		<div>
+</body>
+<script>
+	//改写alert
+	alert = function(txt) {
+		var shield = document.createElement("DIV");
+		shield.id = "shield";
+		shield.style.position = "absolute";
+		shield.style.left = "0px";
+		shield.style.top = "0px";
+		shield.style.width = "100%";
+		shield.style.height = "100%";
+		shield.style.background = "#333";
+		shield.style.textAlign = "center";
+		shield.style.zIndex = "19901000";
+		shield.style.filter = "alpha(opacity=.5)";
+		shield.style.opacity = ".5";
+		var alertFram = document.createElement("DIV");
+		alertFram.id = "alertFram";
+		alertFram.style.position = "absolute";
+		alertFram.style.left = "25%";
+		alertFram.style.top = "35%";
+		alertFram.style.width = "50%";
+		alertFram.style.background = "#ccc";
+		alertFram.style.overflow = "hidden";
+		alertFram.style.textAlign = "center";
+		alertFram.style.borderRadius = "5px";
+		alertFram.style.zIndex = "19901024";
+		strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+		strHtml += " <li style=\"background:#FFFFFF;font-size:16px;text-align:center;height:30px;line-height:30px;border-bottom: 1px solid #EBEBEB;\">提 示</li>\n";
+		strHtml += " <li style=\"padding:20px;background:#fff;text-align:center;font-size:12px;border-bottom: 1px solid #EBEBEB;\">" + txt + "</li>\n";
+		strHtml += " <li style=\"background:#FFFFFF;text-align:center;font-size:14px;height:30px;line-height:30px;\"><span onclick=\"doOk()\" style=\"width: 50%;cursor: pointer;\">确 定</span></li>\n";
+		strHtml += "</ul>\n";
+		alertFram.innerHTML = strHtml;
+		document.body.appendChild(alertFram);
+		document.body.appendChild(shield);
+		var c = 0;
+		this.doAlpha = function() {
+			if(c++ > 20) {
+				clearInterval(ad);
+				return 0;
+			}
+			shield.style.filter = "alpha(opacity=" + c + ")";
+			shield.style.opacity = ".5";
+		}
+		var ad = setInterval("doAlpha()", 5);
+		this.doOk = function() {
+			//alertFram.style.display = "none";
+			//shield.style.display = "none";
+			　　　　
+			document.body.removeChild(alertFram);
+			document.body.removeChild(shield);
+		}
+		alertFram.focus();
+		document.body.onselectstart = function() {
+			return false;
+		};
+	}
+</script>
+
+</html>

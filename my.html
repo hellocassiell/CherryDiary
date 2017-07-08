@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>我的</title>
+		<link rel="stylesheet" href="css/1.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	</head>
+	<script>
+		window.onload = function() {
+
+			if(localStorage.a) {
+				document.getElementById("name").innerText = localStorage.a;
+			} else {}
+		}
+	</script>
+
+	<body>
+		<div data-role="page" class="bg03">
+
+			<div data-role="header" data-position="fixed" id="head">
+				<h1>我的</h1>
+			</div>
+
+			<div data-role="content" style="background-color: #E4DCDE;">
+
+				<div id="my"><img src="img/photo.jpg"><span id="name">丢了樱桃的小丸子</span>
+					<p>个性签名：我爱吃樱桃呀~</p>
+				</div>
+				<br>
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="diary.html" data-ajax="false">点滴</a>
+						</li>
+						<li>
+							<a href="guanzhu.html" data-ajax="false">关注</a>
+						</li>
+						<li>
+							<a href="shoucang.html" data-ajax="false">收藏</a>
+						</li>
+						<li>
+							<a href="fensi.html" data-ajax="false">粉丝</a>
+						</li>
+					</ul>
+				</div><br><br>
+				<div id="liebiao2">
+					<ul data-role="listview">
+						<li>
+							<a href="diary.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/simi.png"><span>私密点滴</span></a>
+						</li>
+						<li>
+							<a href="haoyou.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/friend.png"><span>我的好友</span></a>
+						</li>
+						<li>
+							<a href="huati.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/huati.png"><span>话题</span></a>
+						</li>
+						<li>
+							<a href="myzan.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/zan.png"><span>我的赞</span></a>
+						</li>
+						<li>
+							<a href="mypl.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/pl.png"><span>我的评论</span></a>
+						</li>
+					</ul>
+
+				</div>
+				<br>
+				<div id="liebiao2">
+					<ul data-role="listview">
+						<li>
+							<a href="fuli.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/fuli.png"><span>福利社</span></a>
+						</li>
+						<li>
+							<a href="gxzb.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/gexing.png"><span>个性装扮</span></a>
+						</li>
+						<li>
+							<a href="daren.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/daren.png"><span>达人认证</span></a>
+						</li>
+						<li>
+							<a href="caogao.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/caogao.png"><span>草稿箱</span></a>
+						</li>
+						<li>
+							<a href="shezhi.html" data-ajax="false" class="ui-nodisc-icon"><img src="img/shezhi.png"><span>设置</span></a>
+						</li>
+					</ul>
+
+				</div>
+				<br>
+
+			</div>
+
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" id="foot" style="text-align:center;background-color: #FE797C ;">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="home.html" data-ajax="false" class="ui-btn ui-icon-home1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon " style="width: 40px;height: 40px;margin: 0 auto;border: 0;">主页</a>
+						</li>
+
+						<li>
+							<a href="shequ.html" data-ajax="false" class="ui-btn ui-icon-sq1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon" style="width: 40px;height: 40px;margin: 0 auto;border: 0;">社区</a>
+						</li>
+						<li>
+							<a href="my.html" data-ajax="false" class="ui-btn ui-icon-user1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon" style="width: 40px;height: 40px;margin: 0 auto;border: 0.5px solid #ccc;border-radius: 50%;">我的</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+
+		</div>
+	</body>
+
+</html>

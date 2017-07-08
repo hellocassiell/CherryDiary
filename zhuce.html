@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>hello world</title>
+		<link rel="stylesheet" href="css/1.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<style type="text/css">
+			input {
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div data-role="page" id="pageb">
+			<div data-role="header" data-position="fixed" id="head">
+				<a href="log.html" data-ajax="false"  class="ui-btn ui-icon-back  ui-btn-icon-notext ui-nodisc-icon">返回</a>
+				<h1>注册</h1>
+			</div>
+
+			<div data-role="main" class="ui-content">
+				<p>
+					<label>用户名</label>
+					<input type="text" name="user" id="username">
+					<span class="spa spa1" style="color:red"></span>
+				</p>
+				<br>
+				<p>
+					<label>手机号</label>
+					<input type="text" name="tel" id="userphone">
+					<span class="spa spa2" style="color:red"></span>
+				</p>
+				<br>
+
+				<p>
+					<label>密码</label>
+					<input type="password" name="password" id="password">
+					<span class="spa spa3" style="color:red"></span>
+				</p><br>
+				<p>
+					<label>确认密码</label>
+					<input type="password" name="password" id="rpassword">
+					<span class="spa spa4" style="color:red"></span>
+				</p><br>
+				<p><input type="submit" name="go" id="#sub1" onclick="w()" value="注&nbsp;册" style="background-color: red;opacity:0.2 ;"></p>
+			</div>
+
+			<div data-role="footer" data-position="fixed" style="text-align:center;">
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		window.onload = function() {
+				$("#username").focus()
+			}
+			/************************  失焦判断  **********************************/
+		$("input").blur(function() {
+			$(".spa").css("color", "#BD362F")
+			if($(this).is("#username")) { //姓名判断
+				var na = /^[\u4E00-\u9FA5]{2,4}$/
+				if($("#username").val() != "") {
+					if(!(na.test($("#username").val()))) {
+						$(".spa1").text("请输入2-4个汉字");
+						$(this).css("border", "1px solid #BD362F")
+						return false;
+					} else if(na) {
+						$(".spa1").text("");
+						return true;
+					}
+				} else {
+					$(".spa1").text("请输入用户名");
+				}
+			}
+			if($(this).is("#userphone")) { //手机号判断
+				var ph = /^1[3|5|7|8|][0-9]{9}$/
+				if($("#userphone").val() != "") {
+					if(!(ph.test($("#userphone").val()))) {
+						$(".spa2").text("请输入正确手机号");
+						$(this).css("border", "1px solid #BD362F")
+						return false;
+					} else if(ph) {
+						$(".spa2").text("");
+						return true;
+					}
+				} else {
+					$(".spa2").text("请输入手机号");
+				}
+			}
+
+			if($(this).is("#password")) { //密码判断
+				var ad = /\b(^['A-Za-z0-9]{6,20}$)\b/;
+				if($("#password").val() != "") {
+					if(!(ad.test($("#password").val()))) {
+						$(".spa3").text("请输入6-20位密码");
+						$(this).css("border", "1px solid #BD362F")
+						return false;
+					} else if(ad) {
+						$(".spa3").text("");
+						return true;
+					}
+				} else {
+					$(".spa3").text("请输入密码");
+				}
+			}
+
+			if($(this).is("#rpassword")) { //确认密码判断
+				var ad = /\b(^['A-Za-z0-9]{6,20}$)\b/;
+				if($("#rpassword").val() != "") {
+					if($("#password").val() != $("#rpassword").val()) {
+						$(".spa4").text("请确认密码一致");
+						$(this).css("border", "1px solid #BD362F")
+						return false;
+					} else {
+						$(".spa4").text("");
+						return true;
+					}
+				} else {
+					$(".spa4").text("请输入密码");
+				}
+			}
+		})
+
+		/********************** 聚焦提示 ************************/
+		$("input").focus(function() {
+				if($(this).is("#username")) {
+					$(".spa1").text("2-4个汉字").css("color", "#aaa")
+					$(this).css("border", "1px solid #aaa")
+				}
+				if($(this).is("#userphone")) {
+					$(".spa2").text("11位手机号码").css("color", "#aaa")
+					$(this).css("border", "1px solid #aaa")
+				}
+				if($(this).is("#password")) {
+					$(".spa3").text("6-20位密码").css("color", "#aaa")
+					$(this).css("border", "1px solid #aaa")
+				}
+			})
+			/*********************** 提交验证 ***************************/
+		$("#sub1").click(function() {
+			var na = /^[\u4E00-\u9FA5]{2,4}$/; //姓名正则
+			var ph = /^1[3|5|7|8|][0-9]{9}$/; //手机号正则
+			var ad = /\b(^['A-Za-z0-9]{6,20}$)\b/; //密码正则
+			if(na.test($("#username").val()) && ph.test($("#userphone").val()) && ad.test($("#password").val()) && ($("#password").val() == $("#rpassword").val())) {
+				return true;
+
+			} else {
+
+				return false;
+			}
+		})
+
+		w = function() {
+			var na = /^[\u4E00-\u9FA5]{2,4}$/; //姓名正则
+			var ph = /^1[3|5|7|8|][0-9]{9}$/; //手机号正则
+			var ad = /\b(^['A-Za-z0-9]{6,20}$)\b/; //密码正则
+			if(na.test($("#username").val()) && ph.test($("#userphone").val()) && ad.test($("#password").val()) && ($("#password").val() == $("#rpassword").val())) {
+				localStorage.a = $("#username").val();
+				var A = localStorage.a;
+				localStorage.b = $("#password").val();
+				var B = localStorage.b;
+				alert("注册成功");
+			}
+		}
+	</script>
+<script>
+		//改写alert
+		alert = function(txt) {
+			var shield = document.createElement("DIV");
+			shield.id = "shield";
+			shield.style.position = "absolute";
+			shield.style.left = "0px";
+			shield.style.top = "0px";
+			shield.style.width = "100%";
+			shield.style.height = "100%";
+			shield.style.background = "#333";
+			shield.style.textAlign = "center";
+			shield.style.zIndex = "19901000";
+			shield.style.filter = "alpha(opacity=.5)";
+			shield.style.opacity = ".5";
+			var alertFram = document.createElement("DIV");
+			alertFram.id = "alertFram";
+			alertFram.style.position = "absolute";
+			alertFram.style.left = "25%";
+			alertFram.style.top = "35%";
+			alertFram.style.width = "50%";
+			alertFram.style.background = "#ccc";
+			alertFram.style.overflow = "hidden";
+			alertFram.style.textAlign = "center";
+			alertFram.style.borderRadius = "5px";
+			alertFram.style.zIndex = "19901024";
+			strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+			strHtml += " <li style=\"background:#FFFFFF;font-size:16px;text-align:center;height:30px;line-height:30px;border-bottom: 1px solid #EBEBEB;\">提 示</li>\n";
+			strHtml += " <li style=\"padding:20px;background:#fff;text-align:center;font-size:12px;border-bottom: 1px solid #EBEBEB;\">" + txt + "</li>\n";
+			strHtml += " <li style=\"background:#FFFFFF;text-align:center;font-size:14px;height:30px;line-height:30px;\"><span onclick=\"doOk()\" style=\"width: 50%;cursor: pointer;\">确 定</span></li>\n";
+			strHtml += "</ul>\n";
+			alertFram.innerHTML = strHtml;
+			document.body.appendChild(alertFram);
+			document.body.appendChild(shield);
+			var c = 0;
+			this.doAlpha = function() {
+				if(c++ > 20) {
+					clearInterval(ad);
+					return 0;
+				}
+				shield.style.filter = "alpha(opacity=" + c + ")";
+				shield.style.opacity = ".5";
+			}
+			var ad = setInterval("doAlpha()", 5);
+			this.doOk = function() {
+				//alertFram.style.display = "none";
+				//shield.style.display = "none";
+				　　　　
+				document.body.removeChild(alertFram);
+				document.body.removeChild(shield);
+			}
+			alertFram.focus();
+			document.body.onselectstart = function() {
+				return false;
+			};
+		}
+	</script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>hello world</title>
+		 <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="stylesheets/simple-calendar.css">
+		<style>
+      #calendar{
+        width: 100%
+      }
+      .clearfix{
+        margin-bottom: 50px !important;
+      }
+      #head {
+	background-color: #FF9FBA;
+	height: 40px;
+	color: white;
+	text-align: center;
+	line-height: 40px;
+	font-family: "微软雅黑";
+	font-size: 1em;
+}
+  #head a{
+	color: white;
+	left: 0;
+	position: absolute;
+	
+}
+    </style>
+	</head>
+	<body>
+			<div  id="head">
+    <a href="more.html"  >&nbsp;返回</a>
+				<span style="font-weight: bolder;">日历</span>
+
+			</div>
+
+		
+    <div id="content-wrapper">
+  <div class="inner clearfix">
+      <div id = 'calendar'>
+
+      </div>
+    </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/simple-calendar.js"></script>
+    <script>
+     var myCalendar = new SimpleCalendar('#calendar');
+    </script>
+
+	</body>
+</html>
+

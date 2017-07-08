@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>Log in</title>
+		<link rel="stylesheet" href="css/1.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript">
+			login = function() {
+				var u = document.getElementById('username').value;
+				var p = document.getElementById('password').value;
+				var A1 = localStorage.a;
+				var B1 = localStorage.b;
+				if((u == "111") && (p = "123456") || (u == "HelloWorld") && (p = "123456") || (u == "丢了樱桃的小丸子") && (p = "123456")) {
+					var Url = "home.html";
+					location.href = Url;
+				} else if((u == A1) && (p == B1)) {
+					var Url = "home.html";
+					location.href = Url;
+				} else if(u == "" && p == "") {
+					alert("用户名或密码不能为空");
+				} else {
+					alert("用户名或密码错误");
+				}
+			}
+		</script>
+		<style>
+			input {
+				height: 40px;
+			}
+			
+			.zc {
+				position: absolute;
+				color: palevioletred;
+			}
+			
+			.wm {
+				position: absolute;
+				right: 0;
+				color: palevioletred;
+			}
+			
+			#login {
+				position: absolute;
+				margin: 50px auto;
+				width: 80%;
+				left: 10%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div data-role="page" class="bg02">
+			<div data-role="header" data-position="fixed" id="head">
+				<a href="pagefour.html" data-ajax="false" class="ui-btn ui-icon-back  ui-btn-icon-notext ui-nodisc-icon">返回</a>
+				<h1>登录</h1>
+			</div>
+
+			<div data-role="content" style="height: 730px;padding-bottom: 0px;">
+
+				<video class="covervid-video" autoplay loop>
+
+					<source src="videos/1.mp4" type="video/mp4">
+
+					</source>
+
+				</video>
+				<div id="login">
+
+					<input type="text" name="user" id="username" placeholder="账号/用户名"><span class="spa spa1"></span><br />
+					<input type="password" name="pswd" id="password" placeholder="密码"><span class="spa spa2"></span><br />
+					<input type="submit" value="登&nbsp;录" id="sub" onclick="login();" style="background-color: red; opacity: 0.2;">
+					<a href="zhuce.html" data-ajax="false" class="zc">立即注册</a>
+					<a href="#" class="wm">忘记密码</a>
+				</div>
+
+			</div>
+		</div>
+
+		<script src="js/covervid.js"></script>
+
+		<script type="text/javascript">
+			$('.covervid-video').coverVid(1920, 1080);
+		</script>
+
+	</body>
+	<script type="text/javascript">
+		$("#username").blur(function() {
+			if($("#username").val() == "") {
+				$(".spa1").text('请你填写用户名').css("color", "red");
+			}
+		})
+
+		$("#password").blur(function() {
+			if($("#password").val() == "") {
+				$(".spa2").text('请你填写密码').css("color", "red");
+			}
+		})
+	</script>
+	<script>
+		//改写alert
+		alert = function(txt) {
+			var shield = document.createElement("DIV");
+			shield.id = "shield";
+			shield.style.position = "absolute";
+			shield.style.left = "0px";
+			shield.style.top = "0px";
+			shield.style.width = "100%";
+			shield.style.height = "100%";
+			shield.style.background = "#333";
+			shield.style.textAlign = "center";
+			shield.style.zIndex = "19901000";
+			shield.style.filter = "alpha(opacity=.5)";
+			shield.style.opacity = ".5";
+			var alertFram = document.createElement("DIV");
+			alertFram.id = "alertFram";
+			alertFram.style.position = "absolute";
+			alertFram.style.left = "25%";
+			alertFram.style.top = "35%";
+			alertFram.style.width = "50%";
+			alertFram.style.background = "#ccc";
+			alertFram.style.overflow = "hidden";
+			alertFram.style.textAlign = "center";
+			alertFram.style.borderRadius = "5px";
+			alertFram.style.zIndex = "19901024";
+			strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+			strHtml += " <li style=\"background:#FFFFFF;font-size:16px;text-align:center;height:30px;line-height:30px;border-bottom: 1px solid #EBEBEB;\">提 示</li>\n";
+			strHtml += " <li style=\"padding:20px;background:#fff;text-align:center;font-size:12px;border-bottom: 1px solid #EBEBEB;\">" + txt + "</li>\n";
+			strHtml += " <li style=\"background:#FFFFFF;text-align:center;font-size:14px;height:30px;line-height:30px;\"><span onclick=\"doOk()\" style=\"width: 50%;cursor: pointer;\">确 定</span></li>\n";
+			strHtml += "</ul>\n";
+			alertFram.innerHTML = strHtml;
+			document.body.appendChild(alertFram);
+			document.body.appendChild(shield);
+			var c = 0;
+			this.doAlpha = function() {
+				if(c++ > 20) {
+					clearInterval(ad);
+					return 0;
+				}
+				shield.style.filter = "alpha(opacity=" + c + ")";
+				shield.style.opacity = ".5";
+			}
+			var ad = setInterval("doAlpha()", 5);
+			this.doOk = function() {
+				//alertFram.style.display = "none";
+				//shield.style.display = "none";
+				　　　　
+				document.body.removeChild(alertFram);
+				document.body.removeChild(shield);
+			}
+			alertFram.focus();
+			document.body.onselectstart = function() {
+				return false;
+			};
+		}
+	</script>
+
+</html>

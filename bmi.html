@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>bmi</title>
+		<link rel="stylesheet" href="css/1.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+			#message {
+				font-size: 18px;
+				padding: 25px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div data-role="page" class="bg02">
+			<div data-role="header" data-position="fixed" id="head">
+				<a href="more.html" data-ajax="false" class="ui-btn ui-icon-back  ui-btn-icon-notext ui-nodisc-icon">返回</a>
+				<h1>BMI</h1>
+			</div>
+
+			<div data-role="content" style="background-color: #E4DCDE;height: 650px;padding: 30px;">
+
+				<br/>
+				<form id="form">
+					你的身高(cm):<input type="text" id="height">
+					<span id="height.info" style="color:red"></span>
+					<br/><br/> 你的体重(kg):
+					<input type="text" id="weight">
+					<span id="weight.info" style="color:red"></span>
+					<br/><br/>
+					<input type="button" id="btn" value="测试一下" style="background-color: red;" onclick="ceshi()">
+					<br/></form>
+
+				<div id="message"></div>
+			</div>
+		</div>
+
+		<script>
+			var flag = {
+				"weight": false,
+				"height": false,
+
+			};
+
+			$("#weight").blur(function() {
+				var weight = $(this).val();
+
+				var pattern = /^[1-9]{2}$/;
+				if(!pattern.test(weight)) {
+					$("#weight\\.info").html("输入不合法");
+					return;
+				} else {
+					$("#weight\\.info").html("");
+					flag.weight = true;
+					return;
+				}
+			});
+
+			$("#height").blur(function() {
+				var height = $(this).val();
+
+				var pattern = /^1[0-9]{2}$/;
+				if(!pattern.test(height)) {
+					$("#height\\.info").html("输入不合法");
+					return;
+				} else {
+					$("#height\\.info").html("");
+					flag.height = true;
+					return;
+				}
+			});
+		</script>
+		<script>
+			ceshi = function() {
+				//定义元素有id属性时，会自动生成一个名字为
+				var weight = document.getElementById("weight"); //定义函数==赋值为id为weight的值
+				var height = document.getElementById("height");
+				var btn = document.getElementById("btn");
+				var message = document.getElementById("message");
+
+				//btn添加onclick事件
+				var weightV = weight.value;
+				var heightV1 = height.value;
+				var heightV = heightV1 / 100;
+				//函数Math.pow(参数1，参数2);参数1表示的是数字，参数2表示的是幂；实现平方的效果
+				var bmi = weightV / Math.pow(heightV, 2);
+				//保留小数的方法 .toFixed(3),参数表示小数点是几位小数
+				if(bmi < 10 || bmi > 70) {
+					bmi = ""
+					mes = "请检查输入数据哦~"
+				} else {
+					bmi = bmi.toFixed(3);
+					var mes = "";
+					switch(true) {
+						case bmi < 18.5:
+							mes = "您太瘦了！";
+							break;
+						case bmi >= 18.5 && bmi < 25:
+							mes = "您体重正常！";
+							break;
+						case bmi >= 25 && bmi < 28:
+							mes = "您有点超重！";
+							break;
+						case bmi >= 28 && bmi < 32:
+							mes = "您处于肥胖队列，注意减肥！";
+							break;
+						case bmi >= 32:
+							mes = "您过于肥胖，必须减肥！";
+							break;
+					}
+
+				}
+
+				message.innerHTML = "你的BMI指数为： &nbsp;" + bmi + "<br/><br/>" + mes; //在div中写入内容
+			}
+		</script>
+
+	</body>
+
+</html>

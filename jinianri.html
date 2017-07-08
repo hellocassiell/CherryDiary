@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>hello world</title>
+		<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+		<link href="css/common.css" rel="stylesheet" type="text/css" />
+
+		<script type="text/javascript" src="js/date.js"></script>
+
+		<script type="text/javascript" src="js/iscroll.js"></script>
+
+		<script type="text/javascript">
+			$(function() {
+
+				$('#nq').date();
+
+			});
+		</script>
+		<style>
+			body {
+				margin: 0;
+				height: 800px;
+				background-color: #E4DCDE;
+			}
+			
+			#area {
+				position: relative;
+				width: 100%;
+				height: 700px;
+				background-color: #EFEAEA;
+				display: none;
+			}
+			
+			#area1 {
+				position: absolute;
+				width: 72%;
+				left: 14%;
+				top: 50px;
+				height: 350px;
+				background-color: #fff;
+			}
+			
+			#area1 img {
+				width: 72%;
+				height: 150px;
+				margin-left: 14%;
+				margin-top: 30px;
+				margin-bottom: 5px;
+			}
+			
+			#nr,
+			#nq {
+				width: 70%;
+				margin-left: 15%;
+				height: 40px;
+				border-bottom: 0.5px solid #ccc;
+			}
+			
+			#submit {
+				height: 35px;
+				width: 70%;
+				margin-left: 15%;
+				margin-top: 15px;
+				border: none;
+				background: pink;
+				color: #fff;
+				border-radius: 3px;
+				bottom: 0;
+			}
+			
+			#ctn {
+				min-height: 400px;
+				width: 84%;
+				position: absolute;
+				left: 8%;
+				margin: 30px auto;
+			}
+			
+			#head {
+				background-color: #FF9FBA;
+				height: 40px;
+				color: white;
+				text-align: center;
+				line-height: 40px;
+				font-family: "微软雅黑";
+				font-size: 1em;
+			}
+			
+			#head a {
+				color: white;
+				position: absolute;
+				text-decoration: none;
+				font-size: 12px;
+			}
+			
+			input {
+				border: none;
+			}
+			
+			#jnr {
+				height: 76px;
+				margin-bottom: 15px;
+				background-color: white;
+				position: relative;
+			}
+			
+			#jnr img {
+				width: 60px;
+				height: 60px;
+				left: 8px;
+				top: 8px;
+				position: absolute;
+			}
+			
+			#jnr span {
+				font-size: 20px;
+				color: #000;
+				top: 12px;
+				left: 79px;
+				font-family: "微软雅黑";
+				position: absolute;
+			}
+			
+			#jnr p {
+				font-size: 15px;
+				color: palevioletred;
+				top: 45px;
+				left: 79px;
+				font-family: "微软雅黑";
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="head">
+			<a href="home.html" data-ajax="false" style="left: 12px;">主页</a>
+			<span style="font-weight: bolder;">纪念日</span>
+			<a href="#" data-ajax="false" style="right: 12px;" onclick="rj();">记一记</a>
+		</div>
+		<div id="area">
+			<div id="area1"> <img src="img/sr.jpg">
+				<form action="">
+					<input type="text" id="nr" placeholder="请输入内容">
+					<input type="text" id="nq" placeholder="请输入日期">
+
+				</form>
+				<input type="button" value="保存" id="submit" onclick="wc();">
+			</div>
+		</div>
+
+		<div id="ctn">
+			<div id="jnr"><img src="img/jnr1.jpg"><span>宝贝生日</span><br>
+				<p>2015-10-23</p>
+			</div>
+			<div id="jnr"><img src="img/jnr2.jpg"><span>宝贝一周岁啦</span><br>
+				<p>2016-10-23</p>
+			</div>
+			<div id="jnr"><img src="img/jnr3.jpg"><span>结婚纪念噢</span><br>
+				<p>1997-11-22</p>
+			</div>
+			<div id="jnr"><img src="img/jnr4.jpg"><span>第一次旅行</span><br>
+				<p>2003-06-12</p>
+			</div>
+		</div>
+		<div id="datePlugin"></div>
+	</body>
+	<script>
+		wc = function() {
+			var r = document.getElementById("nr").value;
+			var q = document.getElementById("nq").value;
+			if((r != '') && (q != '')) {
+				var c = document.getElementById("ctn");
+				c.style.display = "block";
+				var vcurrent = document.getElementById("area");
+				vcurrent.style.display = "none";
+				var createDiv = document.createElement("div");
+				createDiv.style.height = "76px";
+				createDiv.style.marginBottom = "15px";
+				createDiv.style.backgroundColor = "white";
+				createDiv.style.position = "relative";
+				c.appendChild(createDiv);
+				var createDiv1 = document.createElement("span");
+				createDiv1.style.fontSize = "20px";
+				createDiv1.style.color = "#000";
+				createDiv1.style.fontFamily = "微软雅黑";
+				createDiv1.style.position = "absolute";
+				createDiv1.style.left = "79px";
+				createDiv1.style.top = "12px";
+				//				createDiv.style.backgroundColor = "transparent";
+				createDiv1.innerHTML = r;
+				createDiv.appendChild(createDiv1);
+				var createDiv2 = document.createElement("p");
+				createDiv2.style.fontSize = "15px";
+				createDiv2.style.color = "palevioletred";
+				createDiv2.style.fontFamily = "微软雅黑";
+				createDiv2.style.position = "absolute";
+				createDiv2.style.left = "79px";
+				createDiv2.style.top = "45px";
+				//				createDiv.style.backgroundColor = "transparent";
+				createDiv2.innerHTML = q;
+				createDiv.appendChild(createDiv2);
+				var img = document.createElement("img");　　　　
+				img.src = "img/sr.jpg";
+				img.style.width = "60px";
+				img.style.height = "60px";
+				img.style.left = "8px";
+				img.style.top = "8px";
+				img.style.position = "absolute";　　　　
+				createDiv.appendChild(img);
+			} else {
+				alert("内容不能为空");
+			}
+		}
+		rj = function() {
+			var c = document.getElementById("ctn");
+			c.style.display = "none";
+
+			var vcurrent = document.getElementById("area");
+			vcurrent.style.display = "block";
+			$("#nr").val('');
+			$("#nq").val('');
+
+		}
+	</script>
+	<script>
+		//改写alert
+		alert = function(txt) {
+			var shield = document.createElement("DIV");
+			shield.id = "shield";
+			shield.style.position = "absolute";
+			shield.style.left = "0px";
+			shield.style.top = "0px";
+			shield.style.width = "100%";
+			shield.style.height = "100%";
+			shield.style.background = "#333";
+			shield.style.textAlign = "center";
+			shield.style.zIndex = "19901000";
+			shield.style.filter = "alpha(opacity=.5)";
+			shield.style.opacity = ".5";
+			var alertFram = document.createElement("DIV");
+			alertFram.id = "alertFram";
+			alertFram.style.position = "absolute";
+			alertFram.style.left = "25%";
+			alertFram.style.top = "35%";
+			alertFram.style.width = "50%";
+			alertFram.style.background = "#ccc";
+			alertFram.style.overflow = "hidden";
+			alertFram.style.textAlign = "center";
+			alertFram.style.borderRadius = "5px";
+			alertFram.style.zIndex = "19901024";
+			strHtml = "<ul style=\"list-style:none;margin:0px;padding:0px;width:100%\">\n";
+			strHtml += " <li style=\"background:#FFFFFF;font-size:16px;text-align:center;height:30px;line-height:30px;border-bottom: 1px solid #EBEBEB;\">提 示</li>\n";
+			strHtml += " <li style=\"padding:20px;background:#fff;text-align:center;font-size:12px;border-bottom: 1px solid #EBEBEB;\">" + txt + "</li>\n";
+			strHtml += " <li style=\"background:#FFFFFF;text-align:center;font-size:14px;height:30px;line-height:30px;\"><span onclick=\"doOk()\" style=\"width: 50%;cursor: pointer;\">确 定</span></li>\n";
+			strHtml += "</ul>\n";
+			alertFram.innerHTML = strHtml;
+			document.body.appendChild(alertFram);
+			document.body.appendChild(shield);
+			var c = 0;
+			this.doAlpha = function() {
+				if(c++ > 20) {
+					clearInterval(ad);
+					return 0;
+				}
+				shield.style.filter = "alpha(opacity=" + c + ")";
+				shield.style.opacity = ".5";
+			}
+			var ad = setInterval("doAlpha()", 5);
+			this.doOk = function() {
+				//alertFram.style.display = "none";
+				//shield.style.display = "none";
+				　　　　
+				document.body.removeChild(alertFram);
+				document.body.removeChild(shield);
+			}
+			alertFram.focus();
+			document.body.onselectstart = function() {
+				return false;
+			};
+		}
+	</script>
+
+</html>

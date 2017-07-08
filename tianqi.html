@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>hello world</title>
+		<link rel="stylesheet" href="css/1.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script src="js/jquery.leoweather.min.js"></script>
+
+		<script src="js/1.js"></script>
+		<style>
+			#demo {
+				height: 300px;
+				margin: 8px 12px 0 12px;
+				background: pink;
+				color: #FFF;
+				overflow: hidden;
+				border-radius: 5px;
+			}
+			
+			#demo i {
+				width: 120px;
+				display: inline-block;
+				height: 125px;
+				line-height: 18px;
+				font-size: 18px;
+				font-style: normal;
+				text-align: center;
+				font-weight: bold;
+			}
+			
+			#demo i.icon-xiaoyu {
+				background-image: url(icon/xiaoyu.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: cover;
+				background-size: 110px 110px;
+			}
+			
+			#demo i.icon-zhongyu {
+				background-image: url(icon/zhongyu.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: cover;
+				background-size: 110px 110px;
+			}
+			
+			#demo i.icon-dayu {
+				background-image: url(icon/dayu.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: cover;
+				background-size: 110px 110px;
+			}
+			#demo i.icon-zhenyu {
+				background-image: url(icon/dayu.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: cover;
+				background-size: 110px 110px;
+			}
+			
+			#demo i.icon-qing {
+				background-image: url(icon/qing.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: 110px 110px;
+			}
+			
+			#demo i.icon-duoyun {
+				background-image: url(icon/duoyun.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: cover;
+				background-size: 110px 110px;
+			}
+			#demo i.icon-leizhenyu {
+				background-image: url(icon/dayu.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: cover;
+				background-size: 110px 110px;
+			}
+			
+			#demo i.icon-yin {
+				background-image: url(icon/yin.png);
+				background-repeat: no-repeat;
+				background-position: center bottom;
+				background-size: cover;
+				background-size: 110px 110px;
+			}
+			
+			#demo p {
+				font-size: 16px;
+			}
+			
+			#demo p span {
+				margin: 0 15px;
+			}
+			
+			.time {
+				height: 64px;
+			}
+			
+			#demo .qw {
+				margin-top: 10px;
+				height: 50px;
+				font-size: 24px;
+				color: palevioletred;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div data-role="page" id="pages">
+			<div data-role="header" id="head">
+				<a href="home.html" data-ajax="false" class="ui-btn ui-icon-home  ui-btn-icon-notext ui-nodisc-icon">主页</a>
+				<h1>天气</h1>
+
+			</div>
+
+			<div data-role="main" class="ui-content" style="background-color: #E4DCDE;padding: 0;height: 800px;text-align: center;">
+				<div id="demo">
+					<script>
+						$('#demo').leoweather({
+							format: '<i class="icon-{图标}"></i><div class="qw">{气温}℃</div><div class="time">{年}年{月}月{日}日' +
+								'<div>星期{周}&nbsp;&nbsp;{时}:{分}:{秒}</div>' +
+								'</div><p>{城市}<span>|</span>{天气}<span>|</span>{风向}{风级}级</p>'
+						});
+					</script>
+				</div>
+
+			</div>
+
+			<div data-role="footer" data-position="fixed" style="text-align:center;">
+
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>hello world</title>
+		<script src="js/jquery-2.1.4.js"></script>
+		<script src="js/jquery.cookie.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			#ctn1 {
+				min-height: 400px;
+				margin: 10px auto;
+			}
+			
+			#ctn1 p {
+				font-size: 25px;
+				text-align: center;
+				margin-top: 60px;
+				color: palevioletred;
+			}
+			
+			#area {
+				margin: 0 auto;
+				position: relative;
+				height: 100px;
+				margin-bottom: 30px;
+			}
+			
+			#textArea1 {
+				display: block;
+				width: 95%;
+				height: 80px;
+				padding: 10px;
+				border-radius: 3px;
+				resize: none;
+				font-size: 12px;
+				background-color: transparent;
+				border-left: 0;
+				border-right: 0;
+				border-bottom: 2px solid #ccc;
+			}
+			
+			#textArea1:focus {
+				outline: none;
+			}
+			
+			#submit1 {
+				width: 50px;
+				height: 24px;
+				border: none;
+				background: lightpink;
+				color: #fff;
+				border-radius: 3px;
+				position: absolute;
+				bottom: 5px;
+				right: 5px;
+			}
+			
+			.con {
+				height: 150px;
+				border: 15px solid white;
+				margin-bottom: 20px;
+				padding-top: 30px;
+				padding-left: 20px;
+				background-color: paleturquoise;
+				position: relative;
+			}
+			
+			.con span {
+				position: absolute;
+				display: block;
+				color: #fff;
+				cursor: pointer;
+				right: 10px;
+				bottom: 5px;
+			}
+			
+			.con i {
+				position: absolute;
+				display: block;
+				left: 10px;
+				top: 5px;
+				font-size: 13px;
+				color: palevioletred;
+				font-style: normal;
+			}
+			
+			#head {
+				background-color: #FF9FBA;
+				height: 40px;
+				color: white;
+				text-align: center;
+				line-height: 40px;
+				font-family: "微软雅黑";
+				font-size: 1em;
+			}
+			
+			#head a {
+				color: white;
+				left: 12px;
+				position: absolute;
+				text-decoration: none;
+				font-size: 12px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="head">
+			<a href="home.html" data-ajax="false">返回</a>
+			<span style="font-weight: bolder;">便利贴</span>
+
+		</div>
+		<div id="area">
+			<form action="">
+				<textarea name="text" id="textArea1" maxlength="140">写点什么...</textarea>
+				<input type="button" value="完成" id="submit1">
+			</form>
+		</div>
+		<div id="ctn1">
+			<p>还没有便利贴哦~</p>
+		</div>
+
+	</body>
+	<script>
+		$(document).ready(function() {
+			var $btn = $('#submit1');
+			var $area = $('#textArea1');
+			var $ctn = $('#ctn1');
+			$btn.click(function() {
+				$val = $area.val();
+				var date = new Date();
+				if($val != '') {
+					$ctn.children('p').hide();
+					var $con = $('<div class="con">' + $val + '<span>delete</span><i>' + date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + date.getHours() + ':' + date.getMinutes() + '</i></div>');
+					$con.data('cooName', 'name' + (date - 0));
+					$ctn.prepend($con);
+					$.cookie('name' + (date - 0), $val, {
+						expires: 1
+					});
+					$('.con').children('span').click(function() {
+						$.cookie($(this).parent().data('cooName'), '', {
+							expires: -1
+						});
+						$(this).parent().remove();
+						if($ctn.children('div').size() == 0) {
+							$ctn.children('p').show();
+						}
+					});
+					$area.val('')
+				} else {
+					alert('内容不能为空!')
+				}
+			});
+			if(document.cookie) {
+				$ctn.children('p').hide();
+				var $coo = $.cookie();
+				for(var key in $coo) {
+					var date = new Date();
+					date.setTime(key.substring(4) - 0)
+					var $con = $('<div class="con">' + $coo[key] + '<span>delete</span><i>' + date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + date.getHours() + ':' + date.getMinutes() + '</i></div>');
+					$con.data('cooName', key);
+					$ctn.prepend($con);
+					$('.con').children('span').click(function() {
+						$.cookie($(this).parent().data('cooName'), '', {
+							expires: -1
+						});
+						$(this).parent().remove();
+						if($ctn.children('div').size() == 0) {
+							$ctn.children('p').show();
+						}
+					})
+				}
+			}
+		})
+	</script>
+
+</html>

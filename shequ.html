@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>社区</title>
+		<link rel="stylesheet" href="css/1.css">
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<link href="css/poposlides.css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+
+	</head>
+
+	<body>
+		<div data-role="page" class="bg02">
+			<div data-role="header" data-position="fixed" id="head">
+				<a href="home.html" data-ajax="false" class="ui-btn ui-icon-home  ui-btn-icon-notext ui-nodisc-icon">主页</a>
+				<h1>社区</h1>
+			</div>
+
+			<div data-role="content" style="background-color: #E4DCDE;padding: 0;">
+				<div class="slides-box">
+					<ul class="slides">
+						<li style="background: url('img/e1.jpg') center"></li>
+						<li style="background: url('img/e2.jpg') center"></li>
+						<li style="background: url('img/e4.jpg') center"></li>
+					</ul>
+				</div>
+				<script src="js/poposlides.js"></script>
+				<script>
+					$(".slides").poposlides();
+				</script>
+				<div class="ui-grid-b annius">
+					<div class="ui-block-a">
+						<a href="#" class="ui-btn ui-corner-all ui-shadow annius1"><span>#玩游戏</span></a>
+					</div>
+					<div class="ui-block-b">
+						<a href="#" class="ui-btn ui-corner-all ui-shadow annius2"><span>#二次元</span></a>
+					</div>
+					<div class="ui-block-c">
+						<a href="#" class="ui-btn ui-corner-all ui-shadow annius3"><span>更多话题</span></a>
+					</div>
+				</div>
+				<div id="jingxuan">
+					<p>&nbsp;&nbsp;精选话题</p><br>
+					<ul data-role="listview" class="jx">
+						<li>
+							<a href="#" class="ui-nodisc-icon "><img src="img/jx1.jpg" width="55px" height="55px" style="margin-top: 5px;margin-left: 5px;">用表情包来表达你此刻的心情<br/>
+								<p>初心客厅</p>
+							</a>
+
+						</li>
+						<li>
+							<a href="#" class="ui-nodisc-icon "><img src="img/jx2.jpg" width="55px" height="55px" style="margin-top: 5px;margin-left: 5px;">【夏目友人帐】暖心的妖怪
+								<br/>
+								<p style="width: 60px;">薄荷初夏</p>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="ui-nodisc-icon"><img src="img/jx3.jpg" width="55px" height="55px" style="margin-top: 5px;margin-left: 5px;">对你影响最深的二次元人物
+								<br/>
+								<p>动漫基地</p>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="ui-nodisc-icon "><img src="img/jx4.jpg" width="55px" height="55px" style="margin-top:5px;margin-left: 5px;">你是一个标准的追星族吗
+								<br/>
+								<p style="width: 60px;">深扒娱乐圈</p>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="ui-nodisc-icon "><img src="img/jx5.jpg" width="55px" height="55px" style="margin-top: 5px;margin-left: 5px;">是什么让你不再相信童话
+								<br/>
+								<p style="width: 60px;">万物皆可萌</p>
+							</a>
+						</li>
+					</ul>
+				</div><br>
+				<div id="jingxuant" style="height: 275px;">
+					<img src="img/photo3.jpg" width="35px" height="35px" style="border-radius: 50%;">
+					<h5 style="top: 10px;left:47px;position: absolute;color: palevioletred;">小草莓:</h5><span style="top: 30px;left:47px;position: absolute;font-size: 10px;color: #B0C4DE;">2017-5-17&nbsp;11:22</span><br>
+					<p>万千人海，不是所有的擦肩，都会回眸。不是所有的相遇，都能相伴走到永远。懂你的人，即便只言片语，也能渗透心灵，有一抹淡淡的甜。直到灵魂深处，有别样的美。缘，哪怕相隔千山万水，总有一天会抵达。
+					</p>
+					<div class="ui-grid-b">
+						<div class="ui-block-a">
+							<img src="img/m1.jpg" height="105px">
+						</div>
+						<div class="ui-block-b">
+							<img src="img/m2.jpg" height="105px">
+						</div>
+						<div class="ui-block-c">
+							<img src="img/m3.jpg" height="105px">
+						</div>
+					</div>
+					<div data-role="navbar">
+						<ul>
+							<li>
+								<a href="#myPopup2" data-rel="popup" class="ui-btn" data-transition="flip">转发</a>
+
+							</li>
+							<li>
+								<a href="#myPopup" data-rel="popup" class="ui-btn" data-transition="flip" onclick="dd()">评论</a>
+							</li>
+							<li>
+								<a href="#">点赞</a>
+							</li>
+							<li>
+								<a href="#">收藏</a>
+							</li>
+						</ul>
+
+					</div>
+					<br></div><br>
+				<div data-role="popup" id="myPopup2" class="ui-content" style="height: 30px;">
+					<p>转发成功！</p>
+				</div>
+				<div data-role="popup" id="myPopup" class="ui-content" style="height: 110px;">
+					<p>评论</p>
+					<input type="text" id="ttt"><input type="button" value="发送" onclick="pl()">
+				</div>
+				<div id="jingxuant" style="height: 305px;">
+					<img src="img/photo4.jpg" width="35px" height="35px" style="border-radius: 50%;">
+					<h5 style="top: 10px;left:47px;position: absolute;color: palevioletred;">楼阁的姑娘:</h5><span style="top: 30px;left:47px;position: absolute;font-size: 10px;color: #B0C4DE;">2017-5-17&nbsp;11:22</span><br>
+					<p>春天的风是柔和的，轻轻的拂过额头时，温和而又轻逸，缓步在这灼灼的春光里，心怡静而又清婉，就连那墙角一株翠绿小草，也在春风下欢快摇曳，心中更添一份愉悦和舒畅。甜美的感觉，如那淡淡的花香轻轻萦绕在心间。
+						<br/><img src="img/e3.jpg" height="140px"></p>
+
+					<div data-role="navbar">
+						<ul>
+							<li>
+								<a href="#myPopup2" data-rel="popup" class="ui-btn" data-transition="flip">转发</a>
+
+							</li>
+							<li>
+								<a href="#myPopup1" data-rel="popup" class="ui-btn" data-transition="flip">评论</a>
+							</li>
+							<li>
+								<a href="#">点赞</a>
+							</li>
+							<li>
+								<a href="#">收藏</a>
+							</li>
+						</ul>
+
+					</div>
+
+					<div data-role="popup" id="myPopup1" class="ui-content" style="height: 110px;">
+						<p>评论</p>
+						<input type="text" id="ttt"><input type="button" value="发送" onclick="pl1()">
+					</div>
+					<br></div>
+			</div>
+
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" id="foot" style="text-align:center;background-color: #FE797C ;">
+				<div data-role="navbar">
+					<ul>
+						<li>
+							<a href="home.html" data-ajax="false" class="ui-btn ui-icon-home1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon " style="width: 40px;height: 40px;margin: 0 auto;border: 0;">主页</a>
+						</li>
+
+						<li>
+							<a href="shequ.html" data-ajax="false" class="ui-btn ui-icon-sq1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon" style="width: 40px;height: 40px;margin: 0 auto;border: 0.5px solid #ccc;border-radius: 50%;">社区</a>
+						</li>
+						<li>
+							<a href="my.html" data-ajax="false" class="ui-btn ui-icon-user1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon" style="width: 40px;height: 40px;margin: 0 auto;border: 0;">我的</a>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		pl = function() {
+			strHtml = "<p>评论成功！</p>";
+			document.getElementById("myPopup").style.height = "30px";
+
+			document.getElementById("myPopup").innerHTML = strHtml;
+		}
+		pl1 = function() {
+			strHtml = "<p>评论成功！</p>";
+			document.getElementById("myPopup1").style.height = "30px";
+			document.getElementById("myPopup1").innerHTML = strHtml;
+		}
+	</script>
+
+</html>
