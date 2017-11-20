@@ -7,6 +7,7 @@
 		<title>hello world</title>
 		<link rel="stylesheet" href="css/1.css">
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
 		<script src="js/jquery.leoweather.min.js"></script>
@@ -73,8 +74,8 @@
 			</div>
 
 			<div data-role="header" id="head1">
-				<a href="#myPanel" class="ui-btn ui-icon-user  ui-btn-icon-notext ui-nodisc-icon">用户</a>
-				<a href="tianqi.html" data-ajax="false" class="ui-btn ui-icon-cloud ui-btn-icon-notext ui-nodisc-icon">天气</a>
+				<a href="#myPanel" style="top: 0; left: -.15rem"><i class="fa fa-user" style="font-size:.9rem;color:#fff; "></i></a>
+				<a href="tianqi.html" data-ajax="false" style="top: 0; right: -.15rem"><i class="fa fa-cloud" style="font-size:.9rem;color:#fff; "></i></a>
 				<div id="date1">
 					<script>
 						$('#date1').leoweather({
@@ -161,18 +162,21 @@
 				</a>
 			</div>
 
-			<div data-role="footer" data-position="fixed" data-tap-toggle="false" id="foot" style="text-align:center;background-color: #FE797C ;height: 40px;">
+			<div data-role="footer" data-position="fixed" data-tap-toggle="false" id="foot" style="text-align:center;height: 2.4rem;">
 				<div data-role="navbar">
 					<ul>
 						<li>
-							<a href="home.html" data-ajax="false" class="ui-btn ui-icon-home1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon " style="width: 40px;height: 40px;margin: 0 auto;border: 0.5px solid #ccc;border-radius: 50%;">主页</a>
+							<a href="#" data-ajax="false" style="background-color: pink; padding-top: .22rem">
+								<i class="fa fa-home" style="font-size:1.9rem;color:#fff;"></i></a>
 						</li>
 
 						<li>
-							<a href="shequ.html" data-ajax="false" class="ui-btn ui-icon-sq1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon" style="width: 40px;height: 40px;margin: 0 auto;border: 0;">社区</a>
+							<a href="shequ.html" data-ajax="false" style="background-color: pink; padding-top: .22rem">
+							<i class="fa fa-leaf" style="font-size:1.9rem;color:#fff; "></i></a>
 						</li>
 						<li>
-							<a href="my.html" data-ajax="false" class="ui-btn ui-icon-user1  ui-btn-icon-notext ui-nodisc-icon ui-alt-icon" style="width: 40px;height: 40px;margin: 0 auto;border: 0;">我的</a>
+							<a href="my.html" data-ajax="false" style="background-color: pink; padding-top: .22rem ">
+								<i class="fa fa-user" style="font-size:1.9rem;color:#fff; "></i></a>
 						</li>
 					</ul>
 

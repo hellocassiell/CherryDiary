@@ -20,26 +20,16 @@ body {
 }
 
 #head {
-	background-color: #FF9FBA;
+	background-color: pink;
 	height: 40px;
 	color: white;
 }
 
 #head .ui-btn {
-	background-color: #FF9FBA;
+	background-color: pink;
 	border: 0;
 }
 
-#foot {
-	background-color: #F8F8F8;
-	height: 40px;
-}
-
-#foot .ui-btn {
-	background-color: #F8F8F8;
-	height: 40px;
-	border: 0;
-}
 
 a {
 	text-decoration: none;
@@ -205,7 +195,7 @@ a {
 	background-color: #EFEAEA;
 }
 
-#myPopup {}
+
 
 #head1 {
 	background-image: url(../img/head.jpg);
@@ -215,10 +205,6 @@ a {
 	height: 180px;
 }
 
-#head1 .ui-btn {
-	top: 0;
-	background-color: #A1C2D1;
-}
 
 #head1 #date1 {
 	top: 90px;
@@ -228,7 +214,7 @@ a {
 	font-size: 13px;
 }
 
-#bg01 {}
+
 
 #bg01 span {
 	font-size: 14px;
@@ -319,26 +305,7 @@ a {
 	height: 18px;
 }
 
-.ui-icon-home1 {
-	background-image: url(../img/home.jpg);
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: cover;
-}
 
-.ui-icon-sq1 {
-	background-image: url(../img/sq.jpg);
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: cover;
-}
-
-.ui-icon-user1 {
-	background-image: url(../img/my.jpg);
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: cover;
-}
 
 #liebiao {
 	height: 225px;
