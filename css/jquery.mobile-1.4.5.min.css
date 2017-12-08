@@ -1207,7 +1207,7 @@ html .ui-bar-a .ui-btn:hover,
 html .ui-body-a .ui-btn:hover,
 html body .ui-group-theme-a .ui-btn:hover,
 html head+body .ui-btn.ui-btn-a:hover {
-	background-color: #ededed;
+	/* background-color: #ededed; */
 	border-color: #ddd;
 	color: #333;
 	text-shadow: 0 1px 0 #f3f3f3
@@ -1224,7 +1224,7 @@ html head+body .ui-btn.ui-btn-a:active {
 	text-shadow: 0 1px 0 #f3f3f3
 }
 
-.ui-page-theme-a .ui-btn.ui-btn-active,
+/* .ui-page-theme-a .ui-btn.ui-btn-active,
 html .ui-bar-a .ui-btn.ui-btn-active,
 html .ui-body-a .ui-btn.ui-btn-active,
 html body .ui-group-theme-a .ui-btn.ui-btn-active,
@@ -1244,8 +1244,8 @@ html .ui-bar-a .ui-slider-track .ui-btn-active,
 html .ui-body-a .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-a .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-a .ui-btn-active {
-	background-color: #38c;
-	border-color: #38c;
+	/* background-color: #38c; */
+	/* border-color: #38c; */
 	color: #fff;
 	/*text-shadow: 0 1px 0 #059*/
 }
@@ -1272,7 +1272,7 @@ html head+body .ui-body-a.ui-focus {
 	/*-webkit-box-shadow: 0 0 12px #38c;
 	-moz-box-shadow: 0 0 12px #38c;
 	box-shadow: 0 0 12px #38c*/
-}
+} */
 
 .ui-bar-b,
 .ui-page-theme-b .ui-bar-inherit,
