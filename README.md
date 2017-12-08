@@ -22,3 +22,13 @@ jquery mobile框架制作APP
 -  涂鸦功能，使用h5canvas画板插件
 -  leoweather.min.js 天气功能
 -  simple-calendar.js 日历功能
+
+# 预览
+主页
+![alt text](https://github.com/hellocassiell/CherryDiary/blob/master/images/home.gif)
+登录
+![alt text](https://github.com/hellocassiell/CherryDiary/blob/master/images/log.gif)
+写日记
+![alt text](https://github.com/hellocassiell/CherryDiary/blob/master/images/note.gif)
+
+## 更多预览图到 images 文件夹中查看
