@@ -24,11 +24,11 @@ jquery mobile框架制作APP
 -  simple-calendar.js 日历功能
 
 # 预览
-主页
+### 主页
 ![alt text](https://github.com/hellocassiell/CherryDiary/blob/master/images/home.gif)
-登录
+### 登录
 ![alt text](https://github.com/hellocassiell/CherryDiary/blob/master/images/log.gif)
-写日记
+### 写日记
 ![alt text](https://github.com/hellocassiell/CherryDiary/blob/master/images/note.gif)
 
-## 更多预览图到 images 文件夹中查看
+#### 更多预览图到 images 文件夹中查看
